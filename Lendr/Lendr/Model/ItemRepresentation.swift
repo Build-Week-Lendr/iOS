@@ -12,5 +12,5 @@ struct ItemRepresentation: Codable {
     let name: String
     let id: String
     let owner: String
-    let holder: String
+    let holder: String?
 }
