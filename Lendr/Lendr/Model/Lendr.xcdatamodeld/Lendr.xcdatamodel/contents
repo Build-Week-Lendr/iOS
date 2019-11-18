@@ -9,8 +9,8 @@
     <entity name="User" representedClassName="User" syncable="YES" codeGenerationType="class">
         <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
-        <relationship name="heldItems" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Item" inverseName="holder" inverseEntity="Item"/>
-        <relationship name="ownedItems" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Item" inverseName="owner" inverseEntity="Item"/>
+        <relationship name="heldItems" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Item" inverseName="holder" inverseEntity="Item"/>
+        <relationship name="ownedItems" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Item" inverseName="owner" inverseEntity="Item"/>
     </entity>
     <elements>
         <element name="User" positionX="-63" positionY="-18" width="128" height="103"/>

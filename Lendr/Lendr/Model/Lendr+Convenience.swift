@@ -9,11 +9,30 @@
 import CoreData
 
 extension User {
+    
+    var representation: UserRepresentation? {
+        guard let name = name,
+            let id = id,
+            let ownedItemsArray = ownedItems?.allObjects as? [Item],
+            let heldItemsArray = heldItems?.allObjects as? [Item] else { return nil }
+        
+        let ownedItemIDs = ownedItemsArray.compactMap({ $0.id })
+        let heldItemIDs = heldItemsArray.compactMap({ $0.id })
+        
+        return UserRepresentation(name: name, id: id, ownedItems: ownedItemIDs, heldItems: heldItemIDs)
+    }
+    
     @discardableResult convenience init(name: String, id: String = UUID().uuidString, context: NSManagedObjectContext) {
         self.init(context: context)
         
         self.name = name
         self.id = id
+    }
+    
+    @discardableResult convenience init(representation: UserRepresentation, context: NSManagedObjectContext) {
+        self.init(name: representation.name,
+                  id: representation.id,
+                  context: context)
     }
 }
 
