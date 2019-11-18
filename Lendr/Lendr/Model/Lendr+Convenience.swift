@@ -22,7 +22,7 @@ extension User {
         return UserRepresentation(name: name, id: id, ownedItems: ownedItemIDs, heldItems: heldItemIDs)
     }
     
-    @discardableResult convenience init(name: String, id: String = UUID().uuidString, context: NSManagedObjectContext) {
+    @discardableResult convenience init(name: String, id: String, context: NSManagedObjectContext) {
         self.init(context: context)
         
         self.name = name
@@ -40,14 +40,13 @@ extension Item {
     
     var representation: ItemRepresentation? {
         guard let name = name,
-            let id = id,
             let owner = owner,
             let ownerId = owner.id else { return nil }
         
         return ItemRepresentation(name: name, id: id, owner: ownerId, holder: holder?.id)
     }
     
-    @discardableResult convenience init(name: String, id: String = UUID().uuidString, context: NSManagedObjectContext) {
+    @discardableResult convenience init(name: String, id: Int16, context: NSManagedObjectContext) {
         self.init(context: context)
         
         self.name = name

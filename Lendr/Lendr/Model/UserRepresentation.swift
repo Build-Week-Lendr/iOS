@@ -11,6 +11,6 @@ import Foundation
 struct UserRepresentation: Codable {
     let name: String
     let id: String
-    let ownedItems: [String]
-    let heldItems: [String]
+    let ownedItems: [Int16]
+    let heldItems: [Int16]
 }

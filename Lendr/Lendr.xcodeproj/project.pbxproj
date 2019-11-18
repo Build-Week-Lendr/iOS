@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		598069982383529E0014493C /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598069972383529E0014493C /* UserController.swift */; };
+		5980699A23835E770014493C /* NetworkingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5980699923835E770014493C /* NetworkingController.swift */; };
+		5980699D23835F6F0014493C /* NetworkDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5980699C23835F6F0014493C /* NetworkDataLoader.swift */; };
+		5980699F23835FBE0014493C /* URLSession+NetworkDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5980699E23835FBE0014493C /* URLSession+NetworkDataLoader.swift */; };
 		5995D16B238316F3006F6404 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5995D16A238316F3006F6404 /* AppDelegate.swift */; };
 		5995D16D238316F3006F6404 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5995D16C238316F3006F6404 /* SceneDelegate.swift */; };
 		5995D172238316F3006F6404 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5995D170238316F3006F6404 /* Main.storyboard */; };
@@ -22,6 +25,9 @@
 
 /* Begin PBXFileReference section */
 		598069972383529E0014493C /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		5980699923835E770014493C /* NetworkingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingController.swift; sourceTree = "<group>"; };
+		5980699C23835F6F0014493C /* NetworkDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataLoader.swift; sourceTree = "<group>"; };
+		5980699E23835FBE0014493C /* URLSession+NetworkDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+NetworkDataLoader.swift"; sourceTree = "<group>"; };
 		5995D167238316F3006F6404 /* Lendr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lendr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5995D16A238316F3006F6404 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5995D16C238316F3006F6404 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,14 +57,25 @@
 			isa = PBXGroup;
 			children = (
 				598069972383529E0014493C /* UserController.swift */,
+				5980699923835E770014493C /* NetworkingController.swift */,
 			);
 			path = "Model Controllers";
+			sourceTree = "<group>";
+		};
+		5980699B23835F5A0014493C /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				5980699C23835F6F0014493C /* NetworkDataLoader.swift */,
+				5980699E23835FBE0014493C /* URLSession+NetworkDataLoader.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		5995D15E238316F3006F6404 = {
 			isa = PBXGroup;
 			children = (
 				5995D169238316F3006F6404 /* Lendr */,
+				5980699B23835F5A0014493C /* Utilities */,
 				5995D168238316F3006F6404 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -169,10 +186,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5980699A23835E770014493C /* NetworkingController.swift in Sources */,
+				5980699F23835FBE0014493C /* URLSession+NetworkDataLoader.swift in Sources */,
 				5995D185238318A5006F6404 /* Lendr+Convenience.swift in Sources */,
 				5995D18923831A9B006F6404 /* ItemRepresentation.swift in Sources */,
 				598069982383529E0014493C /* UserController.swift in Sources */,
 				5995D18723831A4F006F6404 /* UserRepresentation.swift in Sources */,
+				5980699D23835F6F0014493C /* NetworkDataLoader.swift in Sources */,
 				5995D16B238316F3006F6404 /* AppDelegate.swift in Sources */,
 				5995D16D238316F3006F6404 /* SceneDelegate.swift in Sources */,
 				5995D175238316F3006F6404 /* Lendr.xcdatamodeld in Sources */,
