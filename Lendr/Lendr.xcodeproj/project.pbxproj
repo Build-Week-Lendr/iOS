@@ -14,6 +14,9 @@
 		5995D177238316F6006F6404 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5995D176238316F6006F6404 /* Assets.xcassets */; };
 		5995D17A238316F6006F6404 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5995D178238316F6006F6404 /* LaunchScreen.storyboard */; };
 		5995D1832383184C006F6404 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5995D1822383184C006F6404 /* CoreDataStack.swift */; };
+		5995D185238318A5006F6404 /* Lendr+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5995D184238318A5006F6404 /* Lendr+Convenience.swift */; };
+		5995D18723831A4F006F6404 /* UserRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5995D18623831A4F006F6404 /* UserRepresentation.swift */; };
+		5995D18923831A9B006F6404 /* ItemRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5995D18823831A9B006F6404 /* ItemRepresentation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 		5995D179238316F6006F6404 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5995D17B238316F6006F6404 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5995D1822383184C006F6404 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		5995D184238318A5006F6404 /* Lendr+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Lendr+Convenience.swift"; sourceTree = "<group>"; };
+		5995D18623831A4F006F6404 /* UserRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepresentation.swift; sourceTree = "<group>"; };
+		5995D18823831A9B006F6404 /* ItemRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRepresentation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +80,9 @@
 			children = (
 				5995D173238316F3006F6404 /* Lendr.xcdatamodeld */,
 				5995D1822383184C006F6404 /* CoreDataStack.swift */,
+				5995D184238318A5006F6404 /* Lendr+Convenience.swift */,
+				5995D18623831A4F006F6404 /* UserRepresentation.swift */,
+				5995D18823831A9B006F6404 /* ItemRepresentation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -149,6 +158,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5995D185238318A5006F6404 /* Lendr+Convenience.swift in Sources */,
+				5995D18923831A9B006F6404 /* ItemRepresentation.swift in Sources */,
+				5995D18723831A4F006F6404 /* UserRepresentation.swift in Sources */,
 				5995D16B238316F3006F6404 /* AppDelegate.swift in Sources */,
 				5995D16D238316F3006F6404 /* SceneDelegate.swift in Sources */,
 				5995D175238316F3006F6404 /* Lendr.xcdatamodeld in Sources */,
