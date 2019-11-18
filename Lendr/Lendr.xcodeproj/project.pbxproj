@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		598069982383529E0014493C /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598069972383529E0014493C /* UserController.swift */; };
 		5995D16B238316F3006F6404 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5995D16A238316F3006F6404 /* AppDelegate.swift */; };
 		5995D16D238316F3006F6404 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5995D16C238316F3006F6404 /* SceneDelegate.swift */; };
 		5995D172238316F3006F6404 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5995D170238316F3006F6404 /* Main.storyboard */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		598069972383529E0014493C /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		5995D167238316F3006F6404 /* Lendr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lendr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5995D16A238316F3006F6404 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5995D16C238316F3006F6404 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -45,6 +47,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		59806996238352700014493C /* Model Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				598069972383529E0014493C /* UserController.swift */,
+			);
+			path = "Model Controllers";
+			sourceTree = "<group>";
+		};
 		5995D15E238316F3006F6404 = {
 			isa = PBXGroup;
 			children = (
@@ -71,6 +81,7 @@
 				5995D178238316F6006F6404 /* LaunchScreen.storyboard */,
 				5995D17B238316F6006F6404 /* Info.plist */,
 				5995D1812383181F006F6404 /* Model */,
+				59806996238352700014493C /* Model Controllers */,
 			);
 			path = Lendr;
 			sourceTree = "<group>";
@@ -160,6 +171,7 @@
 			files = (
 				5995D185238318A5006F6404 /* Lendr+Convenience.swift in Sources */,
 				5995D18923831A9B006F6404 /* ItemRepresentation.swift in Sources */,
+				598069982383529E0014493C /* UserController.swift in Sources */,
 				5995D18723831A4F006F6404 /* UserRepresentation.swift in Sources */,
 				5995D16B238316F3006F6404 /* AppDelegate.swift in Sources */,
 				5995D16D238316F3006F6404 /* SceneDelegate.swift in Sources */,
