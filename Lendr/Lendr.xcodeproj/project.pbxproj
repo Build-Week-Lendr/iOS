@@ -62,9 +62,17 @@
 				5995D176238316F6006F6404 /* Assets.xcassets */,
 				5995D178238316F6006F6404 /* LaunchScreen.storyboard */,
 				5995D17B238316F6006F6404 /* Info.plist */,
-				5995D173238316F3006F6404 /* Lendr.xcdatamodeld */,
+				5995D1812383181F006F6404 /* Model */,
 			);
 			path = Lendr;
+			sourceTree = "<group>";
+		};
+		5995D1812383181F006F6404 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5995D173238316F3006F6404 /* Lendr.xcdatamodeld */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
