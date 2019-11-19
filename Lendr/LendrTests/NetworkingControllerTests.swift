@@ -35,5 +35,29 @@ class NetworkingControllerTests: XCTestCase {
         
         wait(for: [resultsExpectation], timeout: 2)
     }
+    
+    func testFetchItemsFromServer() {
+        let client = NetworkingController()
+        
+        let resultsExpectation = expectation(description: "Wait for the results")
+        
+        let url = client.baseURL.appendingPathComponent("items").appendingPathComponent("items")
+        
+        client.fetch(from: url) { (itemRepresentations: [ItemRepresentation]?, error: Error?) in
+            XCTAssertNil(error)
+            XCTAssertNotNil(itemRepresentations)
+            
+            // Find item with ID 11
+            guard let item11 = itemRepresentations?.first(where: { $0.id == 11 }) else {
+                XCTFail("Could not find item with id 11")
+                return
+            }
+            
+            XCTAssertEqual(item11.name, "Chain Saw")
+            resultsExpectation.fulfill()
+        }
+        
+        wait(for: [resultsExpectation], timeout: 5)
+    }
 
 }

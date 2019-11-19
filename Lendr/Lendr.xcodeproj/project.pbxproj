@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5914705A23845E7100004A18 /* ItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5914705923845E7100004A18 /* ItemController.swift */; };
 		5914705C238467A700004A18 /* ItemControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5914705B238467A700004A18 /* ItemControllerTests.swift */; };
+		5914705E2384A02600004A18 /* Bearer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5914705D2384A02600004A18 /* Bearer.swift */; };
 		598069982383529E0014493C /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598069972383529E0014493C /* UserController.swift */; };
 		5980699A23835E770014493C /* NetworkingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5980699923835E770014493C /* NetworkingController.swift */; };
 		5980699D23835F6F0014493C /* NetworkDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5980699C23835F6F0014493C /* NetworkDataLoader.swift */; };
@@ -41,6 +42,7 @@
 /* Begin PBXFileReference section */
 		5914705923845E7100004A18 /* ItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemController.swift; sourceTree = "<group>"; };
 		5914705B238467A700004A18 /* ItemControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemControllerTests.swift; sourceTree = "<group>"; };
+		5914705D2384A02600004A18 /* Bearer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bearer.swift; sourceTree = "<group>"; };
 		598069972383529E0014493C /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		5980699923835E770014493C /* NetworkingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingController.swift; sourceTree = "<group>"; };
 		5980699C23835F6F0014493C /* NetworkDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataLoader.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				5995D184238318A5006F6404 /* Lendr+Convenience.swift */,
 				5995D18623831A4F006F6404 /* UserRepresentation.swift */,
 				5995D18823831A9B006F6404 /* ItemRepresentation.swift */,
+				5914705D2384A02600004A18 /* Bearer.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -275,6 +278,7 @@
 				5980699F23835FBE0014493C /* URLSession+NetworkDataLoader.swift in Sources */,
 				5995D185238318A5006F6404 /* Lendr+Convenience.swift in Sources */,
 				5995D18923831A9B006F6404 /* ItemRepresentation.swift in Sources */,
+				5914705E2384A02600004A18 /* Bearer.swift in Sources */,
 				598069982383529E0014493C /* UserController.swift in Sources */,
 				5995D18723831A4F006F6404 /* UserRepresentation.swift in Sources */,
 				5980699D23835F6F0014493C /* NetworkDataLoader.swift in Sources */,
