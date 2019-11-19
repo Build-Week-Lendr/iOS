@@ -11,6 +11,9 @@
 		5980699A23835E770014493C /* NetworkingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5980699923835E770014493C /* NetworkingController.swift */; };
 		5980699D23835F6F0014493C /* NetworkDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5980699C23835F6F0014493C /* NetworkDataLoader.swift */; };
 		5980699F23835FBE0014493C /* URLSession+NetworkDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5980699E23835FBE0014493C /* URLSession+NetworkDataLoader.swift */; };
+		598069AF2383845E0014493C /* NetworkingControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598069AE2383845E0014493C /* NetworkingControllerTests.swift */; };
+		598069B1238384A00014493C /* MockLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598069B0238384A00014493C /* MockLoader.swift */; };
+		598069B3238384FF0014493C /* TestJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598069B2238384FF0014493C /* TestJSON.swift */; };
 		5995D16B238316F3006F6404 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5995D16A238316F3006F6404 /* AppDelegate.swift */; };
 		5995D16D238316F3006F6404 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5995D16C238316F3006F6404 /* SceneDelegate.swift */; };
 		5995D172238316F3006F6404 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5995D170238316F3006F6404 /* Main.storyboard */; };
@@ -23,11 +26,26 @@
 		5995D18923831A9B006F6404 /* ItemRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5995D18823831A9B006F6404 /* ItemRepresentation.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		598069A9238383F70014493C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5995D15F238316F3006F6404 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5995D166238316F3006F6404;
+			remoteInfo = Lendr;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		598069972383529E0014493C /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		5980699923835E770014493C /* NetworkingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingController.swift; sourceTree = "<group>"; };
 		5980699C23835F6F0014493C /* NetworkDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataLoader.swift; sourceTree = "<group>"; };
 		5980699E23835FBE0014493C /* URLSession+NetworkDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+NetworkDataLoader.swift"; sourceTree = "<group>"; };
+		598069A4238383F70014493C /* LendrTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LendrTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		598069A8238383F70014493C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		598069AE2383845E0014493C /* NetworkingControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingControllerTests.swift; sourceTree = "<group>"; };
+		598069B0238384A00014493C /* MockLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLoader.swift; sourceTree = "<group>"; };
+		598069B2238384FF0014493C /* TestJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestJSON.swift; sourceTree = "<group>"; };
 		5995D167238316F3006F6404 /* Lendr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lendr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5995D16A238316F3006F6404 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5995D16C238316F3006F6404 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -43,6 +61,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		598069A1238383F70014493C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5995D164238316F3006F6404 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -71,11 +96,22 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
+		598069A5238383F70014493C /* LendrTests */ = {
+			isa = PBXGroup;
+			children = (
+				598069A8238383F70014493C /* Info.plist */,
+				598069AE2383845E0014493C /* NetworkingControllerTests.swift */,
+				598069B0238384A00014493C /* MockLoader.swift */,
+				598069B2238384FF0014493C /* TestJSON.swift */,
+			);
+			path = LendrTests;
+			sourceTree = "<group>";
+		};
 		5995D15E238316F3006F6404 = {
 			isa = PBXGroup;
 			children = (
 				5995D169238316F3006F6404 /* Lendr */,
-				5980699B23835F5A0014493C /* Utilities */,
+				598069A5238383F70014493C /* LendrTests */,
 				5995D168238316F3006F6404 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -84,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				5995D167238316F3006F6404 /* Lendr.app */,
+				598069A4238383F70014493C /* LendrTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -99,6 +136,7 @@
 				5995D17B238316F6006F6404 /* Info.plist */,
 				5995D1812383181F006F6404 /* Model */,
 				59806996238352700014493C /* Model Controllers */,
+				5980699B23835F5A0014493C /* Utilities */,
 			);
 			path = Lendr;
 			sourceTree = "<group>";
@@ -118,6 +156,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		598069A3238383F70014493C /* LendrTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 598069AB238383F70014493C /* Build configuration list for PBXNativeTarget "LendrTests" */;
+			buildPhases = (
+				598069A0238383F70014493C /* Sources */,
+				598069A1238383F70014493C /* Frameworks */,
+				598069A2238383F70014493C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				598069AA238383F70014493C /* PBXTargetDependency */,
+			);
+			name = LendrTests;
+			productName = LendrTests;
+			productReference = 598069A4238383F70014493C /* LendrTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		5995D166238316F3006F6404 /* Lendr */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5995D17E238316F6006F6404 /* Build configuration list for PBXNativeTarget "Lendr" */;
@@ -145,6 +201,10 @@
 				LastUpgradeCheck = 1120;
 				ORGANIZATIONNAME = "Lambda School";
 				TargetAttributes = {
+					598069A3238383F70014493C = {
+						CreatedOnToolsVersion = 11.2.1;
+						TestTargetID = 5995D166238316F3006F6404;
+					};
 					5995D166238316F3006F6404 = {
 						CreatedOnToolsVersion = 11.2.1;
 					};
@@ -164,11 +224,19 @@
 			projectRoot = "";
 			targets = (
 				5995D166238316F3006F6404 /* Lendr */,
+				598069A3238383F70014493C /* LendrTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		598069A2238383F70014493C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5995D165238316F3006F6404 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -182,6 +250,16 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		598069A0238383F70014493C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				598069AF2383845E0014493C /* NetworkingControllerTests.swift in Sources */,
+				598069B1238384A00014493C /* MockLoader.swift in Sources */,
+				598069B3238384FF0014493C /* TestJSON.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5995D163238316F3006F6404 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -201,6 +279,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		598069AA238383F70014493C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5995D166238316F3006F6404 /* Lendr */;
+			targetProxy = 598069A9238383F70014493C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		5995D170238316F3006F6404 /* Main.storyboard */ = {
@@ -222,6 +308,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		598069AC238383F70014493C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = LendrTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.lambdaschool.LendrTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Lendr.app/Lendr";
+			};
+			name = Debug;
+		};
+		598069AD238383F70014493C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = LendrTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.lambdaschool.LendrTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Lendr.app/Lendr";
+			};
+			name = Release;
+		};
 		5995D17C238316F6006F6404 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -373,6 +497,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		598069AB238383F70014493C /* Build configuration list for PBXNativeTarget "LendrTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				598069AC238383F70014493C /* Debug */,
+				598069AD238383F70014493C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		5995D162238316F3006F6404 /* Build configuration list for PBXProject "Lendr" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
