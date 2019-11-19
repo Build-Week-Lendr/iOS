@@ -139,5 +139,83 @@ class ItemControllerTests: XCTestCase {
         
         wait(for: [resultsExpectation], timeout: 2)
     }
+    
+    func testFetchItemsUpdate() {
+        let context = CoreDataStack.shared.mainContext
+        let itemController = ItemController()
+        
+        let mock = MockLoader()
+        mock.data = validItemsJSON
+        
+        var client = NetworkingController(networkLoader: mock)
+        
+        let resultsExpectation = expectation(description: "Wait for the results")
+        
+        client.fetch(from: URL(string: "https://zero5nelsonm-lendr.herokuapp.com/items/items")!) { (itemRepresentations: [ItemRepresentation]?, error: Error?) in
+            
+            XCTAssertNil(error)
+            guard let itemRepresentations = itemRepresentations else {
+                XCTFail("No item representations fetched")
+                return
+            }
+            
+            do {
+                try itemController.updateItems(from: itemRepresentations, context: context)
+                
+                // Fetch the items to make sure it worked
+                let fetchRequest: NSFetchRequest<Item> = Item.fetchRequest()
+                let items = try context.fetch(fetchRequest)
+                
+                guard let item8 = items.first(where: { $0.id == 8 }) else {
+                    XCTFail("Could not find item with id 8")
+                    return
+                }
+                
+                XCTAssertEqual(item8.name, "Chop Saw")
+            } catch {
+                XCTFail("\(error)")
+            }
+            
+            resultsExpectation.fulfill()
+        }
+        
+        wait(for: [resultsExpectation], timeout: 2)
+        
+        mock.data = validItems2JSON
+        client = NetworkingController(networkLoader: mock)
+        
+        let updatedResultsExpectation = expectation(description: "Wait for the updated results")
+        
+        client.fetch(from: URL(string: "https://zero5nelsonm-lendr.herokuapp.com/items/items")!) { (itemRepresentations: [ItemRepresentation]?, error: Error?) in
+            
+            XCTAssertNil(error)
+            guard let itemRepresentations = itemRepresentations else {
+                XCTFail("No item representations fetched")
+                return
+            }
+            
+            do {
+                try itemController.updateItems(from: itemRepresentations, context: context)
+                
+                // Fetch the items to make sure it worked
+                let fetchRequest: NSFetchRequest<Item> = Item.fetchRequest()
+                let items = try context.fetch(fetchRequest)
+                
+                guard let item8 = items.first(where: { $0.id == 8 }) else {
+                    XCTFail("Could not find item with id 8")
+                    return
+                }
+                
+                XCTAssertNotEqual(item8.name, "Chop Saw")
+                XCTAssertEqual(item8.name, "Chop Saw2")
+            } catch {
+                XCTFail("\(error)")
+            }
+            
+            updatedResultsExpectation.fulfill()
+        }
+        
+        wait(for: [updatedResultsExpectation], timeout: 2)
+    }
 
 }
