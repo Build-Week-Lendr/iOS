@@ -87,5 +87,57 @@ class ItemControllerTests: XCTestCase {
         
         wait(for: [resultsExpectation], timeout: 2)
     }
+    
+    func testCreatingUsersFromFetchedItems() {
+        let context = CoreDataStack.shared.mainContext
+        
+        // Before starting, make sure there are no itmes
+        do {
+            let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
+            let users = try context.fetch(fetchRequest)
+            XCTAssertEqual(users, [])
+        } catch {
+            XCTFail("\(error)")
+        }
+        
+        let itemController = ItemController()
+        
+        let mock = MockLoader()
+        mock.data = validItemsJSON
+        
+        let client = NetworkingController(networkLoader: mock)
+        
+        let resultsExpectation = expectation(description: "Wait for the results")
+        
+        client.fetch(from: URL(string: "https://zero5nelsonm-lendr.herokuapp.com/items/items")!) { (itemRepresentations: [ItemRepresentation]?, error: Error?) in
+            
+            XCTAssertNil(error)
+            guard let itemRepresentations = itemRepresentations else {
+                XCTFail("No item representations fetched")
+                return
+            }
+            
+            do {
+                try itemController.updateItems(from: itemRepresentations, context: context)
+                
+                // Fetch the items to make sure it worked
+                let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
+                let users = try context.fetch(fetchRequest)
+                
+                guard let allen = users.first(where: { $0.name == "Allen" }) else {
+                    XCTFail("Could not find user Allen")
+                    return
+                }
+                
+                XCTAssertEqual(allen.name, "Allen")
+            } catch {
+                XCTFail("\(error)")
+            }
+            
+            resultsExpectation.fulfill()
+        }
+        
+        wait(for: [resultsExpectation], timeout: 2)
+    }
 
 }
