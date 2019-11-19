@@ -10,9 +10,15 @@ import CoreData
 
 class UserController {
     
-    @discardableResult func createUser(named name: String, id: String, context: NSManagedObjectContext) -> User {
-        let user = User(name: name, id: id, context: context)
-
+    @discardableResult func createUser(named name: String, id: String?, context: NSManagedObjectContext) -> User {
+        let user: User
+        
+        if let id = id {
+            user = User(name: name, id: id, context: context)
+        } else {
+            user = User(name: name, context: context)
+        }
+        
         CoreDataStack.shared.save(context: context)
         
         return user

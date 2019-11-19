@@ -22,7 +22,7 @@ extension User {
         return UserRepresentation(name: name, id: id, ownedItems: ownedItemIDs, heldItems: heldItemIDs)
     }
     
-    @discardableResult convenience init(name: String, id: String, context: NSManagedObjectContext) {
+    @discardableResult convenience init(name: String, id: String = UUID().uuidString, context: NSManagedObjectContext) {
         self.init(context: context)
         
         self.name = name
