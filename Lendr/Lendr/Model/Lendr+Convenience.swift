@@ -43,10 +43,16 @@ extension Item {
             let owner = owner,
             let ownerId = owner.id else { return nil }
         
-        return ItemRepresentation(name: name, id: id, owner: ownerId, holder: holder?.id)
+        return ItemRepresentation(name: name,
+                                  id: id,
+                                  owner: ownerId,
+                                  holder: holder?.id,
+                                  itemDescription: itemDescription,
+                                  lendNotes: lendNotes,
+                                  lentDate: nil)
     }
     
-    @discardableResult convenience init(name: String, id: Int16, context: NSManagedObjectContext) {
+    @discardableResult convenience init(name: String, id: Int16, itemDescription: String? = nil, lendNotes: String? = nil, lentDate: Date? = nil, context: NSManagedObjectContext) {
         self.init(context: context)
         
         self.name = name
@@ -54,8 +60,11 @@ extension Item {
     }
     
     @discardableResult convenience init(representation: ItemRepresentation, context: NSManagedObjectContext) {
+
         self.init(name: representation.name,
                   id: representation.id,
+                  itemDescription: representation.itemDescription,
+                  lendNotes: representation.lendNotes,
                   context: context)
     }
 }

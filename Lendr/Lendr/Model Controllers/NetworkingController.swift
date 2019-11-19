@@ -11,6 +11,7 @@ import Foundation
 class NetworkingController {
     
     let networkLoader: NetworkDataLoader
+    let jsonDecoder = JSONDecoder()
     
     init(networkLoader: NetworkDataLoader = URLSession.shared) {
         self.networkLoader = networkLoader
@@ -29,8 +30,7 @@ class NetworkingController {
             }
             
             do {
-                let jsonDecoder = JSONDecoder()
-                let decodedObject = try jsonDecoder.decode(Type.self, from: data)
+                let decodedObject = try self.jsonDecoder.decode(Type.self, from: data)
                 completion(decodedObject, nil)
             } catch {
                 completion(nil, error)

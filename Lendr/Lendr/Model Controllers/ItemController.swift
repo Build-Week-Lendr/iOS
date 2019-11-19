@@ -10,6 +10,13 @@ import CoreData
 
 class ItemController {
     
+    let dateFormatter: DateFormatter
+    
+    init() {
+        dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMMM d, yyyy"
+    }
+    
     func updateItems(from representations: [ItemRepresentation], context: NSManagedObjectContext) throws {
         // Fetch list of all users
         let usersFetchRequest: NSFetchRequest<User> = User.fetchRequest()
@@ -58,6 +65,12 @@ class ItemController {
                     let holder = User(name: holderName, context: context)
                     item.holder = holder
                 }
+            }
+            
+            // Assign the lent date of the item
+            if let lentDateString = representation.lentDate,
+                let lentDate = dateFormatter.date(from: lentDateString) {
+                item.lentDate = lentDate
             }
         }
         
