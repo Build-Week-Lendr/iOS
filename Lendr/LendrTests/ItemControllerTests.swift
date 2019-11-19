@@ -217,5 +217,50 @@ class ItemControllerTests: XCTestCase {
         
         wait(for: [updatedResultsExpectation], timeout: 2)
     }
+    
+    func testDateFormatting() {
+        let context = CoreDataStack.shared.mainContext
+        
+        let itemController = ItemController()
+        
+        let mock = MockLoader()
+        mock.data = validItemsJSON
+        
+        let client = NetworkingController(networkLoader: mock)
+        
+        let resultsExpectation = expectation(description: "Wait for the results")
+        
+        client.fetch(from: URL(string: "https://zero5nelsonm-lendr.herokuapp.com/items/items")!) { (itemRepresentations: [ItemRepresentation]?, error: Error?) in
+            
+            XCTAssertNil(error)
+            guard let itemRepresentations = itemRepresentations else {
+                XCTFail("No item representations fetched")
+                return
+            }
+            
+            do {
+                try itemController.updateItems(from: itemRepresentations, context: context)
+                
+                // Fetch the items to make sure it worked
+                let fetchRequest: NSFetchRequest<Item> = Item.fetchRequest()
+                let items = try context.fetch(fetchRequest)
+                
+                guard let item8 = items.first(where: { $0.id == 8 }),
+                    let item8Date = item8.lentDate else {
+                    XCTFail("Could not load date for item with id 8")
+                    return
+                }
+                
+                let item8DateString = itemController.dateFormatter.string(from: item8Date)
+                XCTAssertEqual(item8DateString, "November 21, 2019")
+            } catch {
+                XCTFail("\(error)")
+            }
+            
+            resultsExpectation.fulfill()
+        }
+        
+        wait(for: [resultsExpectation], timeout: 2)
+    }
 
 }
