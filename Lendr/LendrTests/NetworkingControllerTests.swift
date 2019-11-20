@@ -47,9 +47,9 @@ class NetworkingControllerTests: XCTestCase {
             XCTAssertNil(error)
             XCTAssertNotNil(itemRepresentations)
             
-            // Find item with ID 11
-            guard let item11 = itemRepresentations?.first(where: { $0.id == 11 }) else {
-                XCTFail("Could not find item with id 11")
+            // Find item with ID 15
+            guard let item11 = itemRepresentations?.first(where: { $0.id == 15 }) else {
+                XCTFail("Could not find item with id 15")
                 return
             }
             

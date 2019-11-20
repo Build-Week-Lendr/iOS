@@ -21,7 +21,7 @@ class NetworkingController {
     let jsonEncoder = JSONEncoder()
     
     #warning("Remove the default access token once login is supported")
-    var bearer: Bearer? = Bearer(accessToken: "6abb27c7-07e3-4781-a7cd-d58b76bfd230")
+    var bearer: Bearer? = Bearer(accessToken: "3bf68821-97fc-4042-a417-226563c5e880")
     
     init(networkLoader: NetworkDataLoader = URLSession.shared) {
         self.networkLoader = networkLoader
@@ -93,6 +93,19 @@ class NetworkingController {
             
             completion(data, response, nil)
         }
+    }
+    
+    func delete(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> Void) {
+        guard let bearer = bearer else {
+            completion(nil, nil, NSError())
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "DELETE"
+        request.setValue("Bearer \(bearer.accessToken)", forHTTPHeaderField: HeaderNames.auth.rawValue)
+        
+        networkLoader.loadData(with: request, completion: completion)
     }
     
 }

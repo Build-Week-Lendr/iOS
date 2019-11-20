@@ -283,5 +283,35 @@ class ItemControllerTests: XCTestCase {
         
         wait(for: [resultsExpectation], timeout: 5)
     }
+    
+    func testDeleteItem() {
+        let context = CoreDataStack.shared.mainContext
+        
+        let itemController = ItemController()
+        
+        let resultsExpectation = expectation(description: "Wait for the results")
+        
+        let name = "Test Item to delete"
+        
+        itemController.createItem(named: name, itemDescription: "An item to test deleting items", lendDate: nil, context: context) { createdItem, error in
+            XCTAssertNil(error)
+            XCTAssertNotNil(createdItem)
+            XCTAssertEqual(createdItem?.name, name)
+            
+            itemController.deleteItem(createdItem!, context: context) { error in
+                XCTAssertNil(error)
+                
+                let fetchRequest: NSFetchRequest<Item> = Item.fetchRequest()
+                fetchRequest.predicate = NSPredicate(format: "name == %@", name)
+                let results = try! context.fetch(fetchRequest)
+                
+                XCTAssertEqual(results, [])
+                
+                resultsExpectation.fulfill()
+            }
+        }
+        
+        wait(for: [resultsExpectation], timeout: 5)
+    }
 
 }

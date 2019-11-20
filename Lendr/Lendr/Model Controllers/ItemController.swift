@@ -115,4 +115,22 @@ class ItemController {
         }
     }
     
+    func deleteItem(_ item: Item, context: NSManagedObjectContext, completion: @escaping (Error?) -> Void) {
+        
+        let url = networkingController.baseURL
+            .appendingPathComponent("items")
+            .appendingPathComponent("item")
+            .appendingPathComponent("\(item.id)")
+        
+        networkingController.delete(from: url) { _, _, error in
+            if let error = error {
+                completion(error)
+                return
+            }
+            
+            context.delete(item)
+            completion(nil)
+        }
+    }
+    
 }
