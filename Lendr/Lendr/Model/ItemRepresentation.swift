@@ -25,6 +25,16 @@ struct ItemRepresentation: Codable {
         case lendNotes = "lendnotes"
         case lentDate = "lentdate"
     }
+    
+    func encode (to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: ItemKeys.self)
+        
+        try container.encode(name, forKey: .name)
+        try container.encode(holder, forKey: .holder)
+        try container.encode(itemDescription, forKey: .itemDescription)
+        try container.encode(lendNotes, forKey: .lendNotes)
+        try container.encode(lentDate, forKey: .lentDate)
+    }
 }
 
 extension ItemRepresentation {

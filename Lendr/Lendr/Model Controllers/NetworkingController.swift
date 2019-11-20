@@ -18,9 +18,10 @@ class NetworkingController {
     let baseURL = URL(string: "https://zero5nelsonm-lendr.herokuapp.com")!
     let networkLoader: NetworkDataLoader
     let jsonDecoder = JSONDecoder()
+    let jsonEncoder = JSONEncoder()
     
     #warning("Remove the default access token once login is supported")
-    var bearer: Bearer? = Bearer(accessToken: "5c59b69a-da21-4eff-9bdb-b92150470227")
+    var bearer: Bearer? = Bearer(accessToken: "6abb27c7-07e3-4781-a7cd-d58b76bfd230")
     
     init(networkLoader: NetworkDataLoader = URLSession.shared) {
         self.networkLoader = networkLoader
@@ -52,6 +53,45 @@ class NetworkingController {
             } catch {
                 completion(nil, error)
             }
+        }
+    }
+    
+    func signIn(token: String) {
+        bearer = Bearer(accessToken: token)
+    }
+    
+    func post<Type: Codable>(_ value: Type, to url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> Void) {
+        guard let bearer = bearer else {
+            completion(nil, nil, NSError())
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("Bearer \(bearer.accessToken)", forHTTPHeaderField: HeaderNames.auth.rawValue)
+        request.setValue("application/json", forHTTPHeaderField: HeaderNames.contentType.rawValue)
+        
+        do {
+            let encodedJSON = try jsonEncoder.encode(value)
+            request.httpBody = encodedJSON
+        } catch {
+            completion(nil, nil, error)
+            return
+        }
+        
+        networkLoader.loadData(with: request) { data, response, error in
+            if let error = error {
+                completion(nil, nil, error)
+                return
+            }
+            
+            guard let data = data,
+                let response = response else {
+                completion(nil, nil, NSError())
+                return
+            }
+            
+            completion(data, response, nil)
         }
     }
     

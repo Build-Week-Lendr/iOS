@@ -262,5 +262,26 @@ class ItemControllerTests: XCTestCase {
         
         wait(for: [resultsExpectation], timeout: 2)
     }
+    
+    func testCreateItem() {
+        let context = CoreDataStack.shared.mainContext
+        
+        let itemController = ItemController()
+        
+        let resultsExpectation = expectation(description: "Wait for the results")
+        
+        // This is so the item created will (likely) not already exist, as the test will fail if it does
+        let randomNumber = Int.random(in: 0...99)
+        
+        itemController.createItem(named: "Test Item \(randomNumber)", itemDescription: "An item to test creating items", lendDate: nil, context: context) { createdItem, error in
+            XCTAssertNil(error)
+            XCTAssertNotNil(createdItem)
+            XCTAssertEqual(createdItem?.name, "Test Item \(randomNumber)")
+            
+            resultsExpectation.fulfill()
+        }
+        
+        wait(for: [resultsExpectation], timeout: 5)
+    }
 
 }
