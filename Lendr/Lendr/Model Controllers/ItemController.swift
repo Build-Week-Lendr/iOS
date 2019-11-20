@@ -133,4 +133,38 @@ class ItemController {
         }
     }
     
+    func updateItem(item: Item, name: String, holder: User?, itemDescription: String?, lendNotes: String?, lendDate: Date?, context: NSManagedObjectContext, completion: @escaping (Item?, Error?) -> Void) {
+        
+        var lendDateString: String?
+        
+        if let lendDate = lendDate {
+            lendDateString = dateFormatter.string(from: lendDate)
+        }
+        
+        item.name = name
+        item.holder = holder
+        item.itemDescription = itemDescription
+        item.lendNotes = lendNotes
+        item.lentDate = lendDate
+        
+        var itemRepresentation = item.representation
+        itemRepresentation?.lentDate = lendDateString
+        
+        let url = networkingController.baseURL
+            .appendingPathComponent("items")
+            .appendingPathComponent("item")
+            .appendingPathComponent("\(item.id)")
+        
+        networkingController.post(itemRepresentation, to: url) { data, response, error in
+
+            if let error = error {
+                completion(nil, error)
+                return
+            }
+            
+            CoreDataStack.shared.save(context: context)
+            completion(item, nil)
+        }
+    }
+    
 }

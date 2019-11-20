@@ -15,7 +15,7 @@ struct ItemRepresentation: Codable {
     let holder: String?
     let itemDescription: String?
     let lendNotes: String?
-    let lentDate: String?
+    var lentDate: String?
     
     enum ItemKeys: String, CodingKey {
         case name = "itemname"

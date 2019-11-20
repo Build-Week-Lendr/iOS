@@ -313,5 +313,37 @@ class ItemControllerTests: XCTestCase {
         
         wait(for: [resultsExpectation], timeout: 5)
     }
+    
+    func testUpdateItem() {
+        let context = CoreDataStack.shared.mainContext
+        
+        let itemController = ItemController()
+        
+        let resultsExpectation = expectation(description: "Wait for the results")
+        
+        let name = "Test item to be updated"
+        let updatedName = "Test item that has been updated"
+        
+        itemController.createItem(named: name, itemDescription: "An item to test updating items", lendDate: nil, context: context) { createdItem, error in
+            XCTAssertNil(error)
+            XCTAssertNotNil(createdItem)
+            XCTAssertEqual(createdItem?.name, name)
+            
+            itemController.updateItem(item: createdItem!,
+                                      name: updatedName,
+                                      holder: nil,
+                                      itemDescription: nil,
+                                      lendNotes: nil,
+                                      lendDate: nil,
+                                      context: context) { updatedItem, error in
+                                        XCTAssertNil(error)
+                                        XCTAssertNotNil(createdItem)
+                                        XCTAssertEqual(updatedItem?.name, updatedName)
+                                        resultsExpectation.fulfill()
+            }
+        }
+        
+        wait(for: [resultsExpectation], timeout: 5)
+    }
 
 }
