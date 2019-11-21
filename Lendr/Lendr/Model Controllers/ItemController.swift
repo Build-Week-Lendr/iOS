@@ -80,7 +80,7 @@ class ItemController {
         CoreDataStack.shared.save(context: context)
     }
     
-    func createItem(named name: String, holder: User? = nil, itemDescription: String? = nil, lendNotes: String? = nil, lendDate: Date? = Date(), context: NSManagedObjectContext, completion: @escaping (Item?, Error?) -> Void) {
+    func createItem(named name: String, holder: User? = nil, itemDescription: String? = nil, lendNotes: String? = nil, lendDate: Date? = Date(), context: NSManagedObjectContext, completion: @escaping (Item?, Error?) -> Void = { _, _ in }) {
         
         var lendDateString: String?
         

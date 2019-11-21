@@ -41,7 +41,7 @@ class createItemViewController: UIViewController{
         let notes = notesTextView.text
         let borrower = User(name: borrowerName, context: CoreDataStack.shared.mainContext)
       
-//        itemController.createItem(named: name, holder: borrower, itemDescription: description, lendNotes: notes, lendDate: Date(), context: CoreDataStack.shared.mainContext, completion: <#T##(Item?, Error?) -> Void#>)
+        itemController.createItem(named: name, holder: borrower, itemDescription: description, lendNotes: notes, lendDate: Date(), context: CoreDataStack.shared.mainContext)
     }
     
 
