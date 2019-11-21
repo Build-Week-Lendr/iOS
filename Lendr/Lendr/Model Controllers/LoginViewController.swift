@@ -10,6 +10,8 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
+    @IBOutlet weak var tokenTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,5 +28,11 @@ class LoginViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    @IBAction func loginButtonTapped(_ sender: Any) {
+        guard let token = tokenTextField.text,
+            !token.isEmpty else { return }
+        
+        
+    }
+    
 }

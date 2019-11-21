@@ -18,6 +18,7 @@ class ItemController {
     }
     
     func updateItems(from representations: [ItemRepresentation], context: NSManagedObjectContext) throws {
+        
         // Fetch list of all users
         let usersFetchRequest: NSFetchRequest<User> = User.fetchRequest()
         let users = try context.fetch(usersFetchRequest)

@@ -20,7 +20,7 @@ class NetworkingController {
     let jsonDecoder = JSONDecoder()
     
     #warning("Remove the default access token once login is supported")
-    var bearer: Bearer? = Bearer(accessToken: "5c59b69a-da21-4eff-9bdb-b92150470227")
+    var bearer: Bearer? = Bearer(accessToken: "28dd42cf-1468-4baa-b1dc-0d55b647044c")
     
     init(networkLoader: NetworkDataLoader = URLSession.shared) {
         self.networkLoader = networkLoader
