@@ -23,11 +23,12 @@
 		5995D175238316F3006F6404 /* Lendr.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5995D173238316F3006F6404 /* Lendr.xcdatamodeld */; };
 		5995D177238316F6006F6404 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5995D176238316F6006F6404 /* Assets.xcassets */; };
 		5995D17A238316F6006F6404 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5995D178238316F6006F6404 /* LaunchScreen.storyboard */; };
-		E97C60FA2384B03200232701 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97C60F92384B03200232701 /* LoginViewController.swift */; };
 		5995D1832383184C006F6404 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5995D1822383184C006F6404 /* CoreDataStack.swift */; };
 		5995D185238318A5006F6404 /* Lendr+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5995D184238318A5006F6404 /* Lendr+Convenience.swift */; };
 		5995D18723831A4F006F6404 /* UserRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5995D18623831A4F006F6404 /* UserRepresentation.swift */; };
 		5995D18923831A9B006F6404 /* ItemRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5995D18823831A9B006F6404 /* ItemRepresentation.swift */; };
+		E97C60FA2384B03200232701 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97C60F92384B03200232701 /* LoginViewController.swift */; };
+		E9D8082623860E1400754F70 /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D8082523860E1400754F70 /* ItemDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,11 +62,12 @@
 		5995D176238316F6006F6404 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5995D179238316F6006F6404 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5995D17B238316F6006F6404 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E97C60F92384B03200232701 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5995D1822383184C006F6404 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		5995D184238318A5006F6404 /* Lendr+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Lendr+Convenience.swift"; sourceTree = "<group>"; };
 		5995D18623831A4F006F6404 /* UserRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepresentation.swift; sourceTree = "<group>"; };
 		5995D18823831A9B006F6404 /* ItemRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRepresentation.swift; sourceTree = "<group>"; };
+		E97C60F92384B03200232701 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		E9D8082523860E1400754F70 /* ItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +144,7 @@
 				5995D16C238316F3006F6404 /* SceneDelegate.swift */,
 				E97C60F82384B00D00232701 /* Model Controllers */,
 				5995D170238316F3006F6404 /* Main.storyboard */,
+				E9D8082523860E1400754F70 /* ItemDetailViewController.swift */,
 				5995D176238316F6006F6404 /* Assets.xcassets */,
 				5995D178238316F6006F6404 /* LaunchScreen.storyboard */,
 				5995D17B238316F6006F6404 /* Info.plist */,
@@ -151,14 +154,6 @@
 			);
 			path = Lendr;
 			sourceTree = "<group>";
-		};
-		E97C60F82384B00D00232701 /* Model Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				E97C60F92384B03200232701 /* LoginViewController.swift */,
-			);
-			path = "Model Controllers";
-      sourceTree = "<group>";
 		};
 		5995D1812383181F006F6404 /* Model */ = {
 			isa = PBXGroup;
@@ -171,6 +166,14 @@
 				5914705D2384A02600004A18 /* Bearer.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		E97C60F82384B00D00232701 /* Model Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E97C60F92384B03200232701 /* LoginViewController.swift */,
+			);
+			path = "Model Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -290,6 +293,7 @@
 				5980699F23835FBE0014493C /* URLSession+NetworkDataLoader.swift in Sources */,
 				5995D185238318A5006F6404 /* Lendr+Convenience.swift in Sources */,
 				5995D18923831A9B006F6404 /* ItemRepresentation.swift in Sources */,
+				E9D8082623860E1400754F70 /* ItemDetailViewController.swift in Sources */,
 				5914705E2384A02600004A18 /* Bearer.swift in Sources */,
 				598069982383529E0014493C /* UserController.swift in Sources */,
 				5995D18723831A4F006F6404 /* UserRepresentation.swift in Sources */,
