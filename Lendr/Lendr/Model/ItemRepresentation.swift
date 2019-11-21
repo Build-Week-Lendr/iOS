@@ -15,7 +15,7 @@ struct ItemRepresentation: Codable {
     let holder: String?
     let itemDescription: String?
     let lendNotes: String?
-    let lentDate: String?
+    var lentDate: String?
     
     enum ItemKeys: String, CodingKey {
         case name = "itemname"
@@ -24,6 +24,16 @@ struct ItemRepresentation: Codable {
         case itemDescription = "itemdescription"
         case lendNotes = "lendnotes"
         case lentDate = "lentdate"
+    }
+    
+    func encode (to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: ItemKeys.self)
+        
+        try container.encode(name, forKey: .name)
+        try container.encode(holder, forKey: .holder)
+        try container.encode(itemDescription, forKey: .itemDescription)
+        try container.encode(lendNotes, forKey: .lendNotes)
+        try container.encode(lentDate, forKey: .lentDate)
     }
 }
 

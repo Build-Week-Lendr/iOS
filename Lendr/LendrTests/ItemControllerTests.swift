@@ -262,5 +262,88 @@ class ItemControllerTests: XCTestCase {
         
         wait(for: [resultsExpectation], timeout: 2)
     }
+    
+    func testCreateItem() {
+        let context = CoreDataStack.shared.mainContext
+        
+        let itemController = ItemController()
+        
+        let resultsExpectation = expectation(description: "Wait for the results")
+        
+        // This is so the item created will (likely) not already exist, as the test will fail if it does
+        let randomNumber = Int.random(in: 0...99)
+        
+        itemController.createItem(named: "Test Item \(randomNumber)", itemDescription: "An item to test creating items", lendDate: nil, context: context) { createdItem, error in
+            XCTAssertNil(error)
+            XCTAssertNotNil(createdItem)
+            XCTAssertEqual(createdItem?.name, "Test Item \(randomNumber)")
+            
+            resultsExpectation.fulfill()
+        }
+        
+        wait(for: [resultsExpectation], timeout: 5)
+    }
+    
+    func testDeleteItem() {
+        let context = CoreDataStack.shared.mainContext
+        
+        let itemController = ItemController()
+        
+        let resultsExpectation = expectation(description: "Wait for the results")
+        
+        let name = "Test Item to delete"
+        
+        itemController.createItem(named: name, itemDescription: "An item to test deleting items", lendDate: nil, context: context) { createdItem, error in
+            XCTAssertNil(error)
+            XCTAssertNotNil(createdItem)
+            XCTAssertEqual(createdItem?.name, name)
+            
+            itemController.deleteItem(createdItem!, context: context) { error in
+                XCTAssertNil(error)
+                
+                let fetchRequest: NSFetchRequest<Item> = Item.fetchRequest()
+                fetchRequest.predicate = NSPredicate(format: "name == %@", name)
+                let results = try! context.fetch(fetchRequest)
+                
+                XCTAssertEqual(results, [])
+                
+                resultsExpectation.fulfill()
+            }
+        }
+        
+        wait(for: [resultsExpectation], timeout: 5)
+    }
+    
+    func testUpdateItem() {
+        let context = CoreDataStack.shared.mainContext
+        
+        let itemController = ItemController()
+        
+        let resultsExpectation = expectation(description: "Wait for the results")
+        
+        let name = "Test item to be updated"
+        let updatedName = "Test item that has been updated"
+        
+        itemController.createItem(named: name, itemDescription: "An item to test updating items", lendDate: nil, context: context) { createdItem, error in
+            XCTAssertNil(error)
+            XCTAssertNotNil(createdItem)
+            XCTAssertEqual(createdItem?.name, name)
+            
+            itemController.updateItem(item: createdItem!,
+                                      name: updatedName,
+                                      holder: nil,
+                                      itemDescription: nil,
+                                      lendNotes: nil,
+                                      lendDate: nil,
+                                      context: context) { updatedItem, error in
+                                        XCTAssertNil(error)
+                                        XCTAssertNotNil(createdItem)
+                                        XCTAssertEqual(updatedItem?.name, updatedName)
+                                        resultsExpectation.fulfill()
+            }
+        }
+        
+        wait(for: [resultsExpectation], timeout: 5)
+    }
 
 }
