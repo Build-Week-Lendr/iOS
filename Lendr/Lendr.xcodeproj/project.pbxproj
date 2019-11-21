@@ -28,6 +28,9 @@
 		5995D18723831A4F006F6404 /* UserRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5995D18623831A4F006F6404 /* UserRepresentation.swift */; };
 		5995D18923831A9B006F6404 /* ItemRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5995D18823831A9B006F6404 /* ItemRepresentation.swift */; };
 		E97C60FA2384B03200232701 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97C60F92384B03200232701 /* LoginViewController.swift */; };
+		E9C068B323862C0B00AD8E33 /* inventoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C068B223862C0B00AD8E33 /* inventoryTableViewController.swift */; };
+		E9C068B523862C4A00AD8E33 /* userInventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C068B423862C4A00AD8E33 /* userInventoryViewController.swift */; };
+		E9C068B723863EC700AD8E33 /* createItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C068B623863EC700AD8E33 /* createItemViewController.swift */; };
 		E9D8082623860E1400754F70 /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D8082523860E1400754F70 /* ItemDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +70,9 @@
 		5995D18623831A4F006F6404 /* UserRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepresentation.swift; sourceTree = "<group>"; };
 		5995D18823831A9B006F6404 /* ItemRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRepresentation.swift; sourceTree = "<group>"; };
 		E97C60F92384B03200232701 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		E9C068B223862C0B00AD8E33 /* inventoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = inventoryTableViewController.swift; path = Lendr/inventoryTableViewController.swift; sourceTree = SOURCE_ROOT; };
+		E9C068B423862C4A00AD8E33 /* userInventoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userInventoryViewController.swift; sourceTree = "<group>"; };
+		E9C068B623863EC700AD8E33 /* createItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = createItemViewController.swift; sourceTree = "<group>"; };
 		E9D8082523860E1400754F70 /* ItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -94,6 +100,7 @@
 				598069972383529E0014493C /* UserController.swift */,
 				5980699923835E770014493C /* NetworkingController.swift */,
 				5914705923845E7100004A18 /* ItemController.swift */,
+				E9C068B223862C0B00AD8E33 /* inventoryTableViewController.swift */,
 			);
 			path = "Model Controllers";
 			sourceTree = "<group>";
@@ -144,6 +151,8 @@
 				5995D16C238316F3006F6404 /* SceneDelegate.swift */,
 				E97C60F82384B00D00232701 /* Model Controllers */,
 				5995D170238316F3006F6404 /* Main.storyboard */,
+				E9C068B623863EC700AD8E33 /* createItemViewController.swift */,
+				E9C068B423862C4A00AD8E33 /* userInventoryViewController.swift */,
 				E9D8082523860E1400754F70 /* ItemDetailViewController.swift */,
 				5995D176238316F6006F6404 /* Assets.xcassets */,
 				5995D178238316F6006F6404 /* LaunchScreen.storyboard */,
@@ -297,10 +306,13 @@
 				5914705E2384A02600004A18 /* Bearer.swift in Sources */,
 				598069982383529E0014493C /* UserController.swift in Sources */,
 				5995D18723831A4F006F6404 /* UserRepresentation.swift in Sources */,
+				E9C068B523862C4A00AD8E33 /* userInventoryViewController.swift in Sources */,
 				5980699D23835F6F0014493C /* NetworkDataLoader.swift in Sources */,
+				E9C068B323862C0B00AD8E33 /* inventoryTableViewController.swift in Sources */,
 				5995D16B238316F3006F6404 /* AppDelegate.swift in Sources */,
 				5995D16D238316F3006F6404 /* SceneDelegate.swift in Sources */,
 				5995D175238316F3006F6404 /* Lendr.xcdatamodeld in Sources */,
+				E9C068B723863EC700AD8E33 /* createItemViewController.swift in Sources */,
 				5914705A23845E7100004A18 /* ItemController.swift in Sources */,
 				5995D1832383184C006F6404 /* CoreDataStack.swift in Sources */,
 			);
