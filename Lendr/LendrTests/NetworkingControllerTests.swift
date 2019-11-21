@@ -78,5 +78,21 @@ class NetworkingControllerTests: XCTestCase {
         
         wait(for: [resultsExpectation], timeout: 5)
     }
+    
+    func testGetUserInfo() {
+        let client = NetworkingController()
+        
+        let resultsExpectation = expectation(description: "Wait for the results")
+        
+        client.fetchUserInfo { userDetails, error in
+            XCTAssertNil(error)
+            XCTAssertNotNil(userDetails)
+            XCTAssertEqual(userDetails?.username, "isaac")
+            
+            resultsExpectation.fulfill()
+        }
+        
+        wait(for: [resultsExpectation], timeout: 5)
+    }
 
 }

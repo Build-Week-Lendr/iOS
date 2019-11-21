@@ -93,6 +93,38 @@ class NetworkingController {
         bearer = Bearer(accessToken: token)
     }
     
+    func fetchUserInfo(completion: @escaping (UserDetails?, Error?) -> Void) {
+        guard let bearer = bearer else {
+            completion(nil, NSError())
+            return
+        }
+        
+        let url = baseURL
+            .appendingPathComponent("users")
+            .appendingPathComponent("getuserinfo")
+        
+        var request = URLRequest(url: url)
+        request.setValue("Bearer \(bearer.accessToken)", forHTTPHeaderField: HeaderNames.auth.rawValue)
+        
+        networkLoader.loadData(with: request) { data, error in
+            if let error = error {
+                completion(nil, error)
+            }
+            
+            guard let data = data else {
+                completion(nil, NSError())
+                return
+            }
+            
+            do {
+                let userDetails = try self.jsonDecoder.decode(UserDetails.self, from: data)
+                completion(userDetails, nil)
+            } catch {
+                completion(nil, error)
+            }
+        }
+    }
+    
     func post<Type: Codable>(_ value: Type, to url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> Void) {
         guard let bearer = bearer else {
             completion(nil, nil, NSError())
