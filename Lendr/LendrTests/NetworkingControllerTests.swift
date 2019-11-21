@@ -47,13 +47,32 @@ class NetworkingControllerTests: XCTestCase {
             XCTAssertNil(error)
             XCTAssertNotNil(itemRepresentations)
             
-            // Find item with ID 15
-            guard let item11 = itemRepresentations?.first(where: { $0.id == 15 }) else {
-                XCTFail("Could not find item with id 15")
+            // Find item with ID 35
+            guard let item11 = itemRepresentations?.first(where: { $0.id == 35 }) else {
+                XCTFail("Could not find item with id 35")
                 return
             }
             
             XCTAssertEqual(item11.name, "Chain Saw")
+            resultsExpectation.fulfill()
+        }
+        
+        wait(for: [resultsExpectation], timeout: 5)
+    }
+    
+    func testSignUp() {
+        let client = NetworkingController()
+        
+        let resultsExpectation = expectation(description: "Wait for the results")
+        
+        // This is so the item created will (likely) not already exist, as the test will fail if it does
+        //let randomNumber = Int.random(in: 0...99)
+        let newUser = SignUpUser(username: "Swift Test", password: "test", email: "test@example.com")
+        
+        client.signUp(user: newUser) { response, error in
+            XCTAssertNil(error)
+            XCTAssertNotNil(response?.access_token)
+            
             resultsExpectation.fulfill()
         }
         
