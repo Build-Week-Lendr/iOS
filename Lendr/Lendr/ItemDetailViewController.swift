@@ -10,9 +10,11 @@ import UIKit
 
 class ItemDetailViewController: UIViewController {
 
+    
+    var item: Item!
+    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var notesTextView: UITextView!
-    @IBOutlet weak var borrowItemButton: UIButton!
     @IBOutlet weak var lendItemButton: UIButton!
     @IBOutlet weak var ownerLabel: UILabel!
     @IBOutlet weak var holderLabel: UILabel!
