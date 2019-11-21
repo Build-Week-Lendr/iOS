@@ -10,6 +10,9 @@
 		5914705A23845E7100004A18 /* ItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5914705923845E7100004A18 /* ItemController.swift */; };
 		5914705C238467A700004A18 /* ItemControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5914705B238467A700004A18 /* ItemControllerTests.swift */; };
 		5914705E2384A02600004A18 /* Bearer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5914705D2384A02600004A18 /* Bearer.swift */; };
+		595D60632386F8AE00D8A61B /* SignUpUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595D60622386F8AE00D8A61B /* SignUpUser.swift */; };
+		595D60652386FA5E00D8A61B /* SignInResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595D60642386FA5E00D8A61B /* SignInResponse.swift */; };
+		595D606723871A7E00D8A61B /* UserDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595D606623871A7D00D8A61B /* UserDetails.swift */; };
 		598069982383529E0014493C /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598069972383529E0014493C /* UserController.swift */; };
 		5980699A23835E770014493C /* NetworkingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5980699923835E770014493C /* NetworkingController.swift */; };
 		5980699D23835F6F0014493C /* NetworkDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5980699C23835F6F0014493C /* NetworkDataLoader.swift */; };
@@ -45,6 +48,9 @@
 		5914705923845E7100004A18 /* ItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemController.swift; sourceTree = "<group>"; };
 		5914705B238467A700004A18 /* ItemControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemControllerTests.swift; sourceTree = "<group>"; };
 		5914705D2384A02600004A18 /* Bearer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bearer.swift; sourceTree = "<group>"; };
+		595D60622386F8AE00D8A61B /* SignUpUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUser.swift; sourceTree = "<group>"; };
+		595D60642386FA5E00D8A61B /* SignInResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInResponse.swift; sourceTree = "<group>"; };
+		595D606623871A7D00D8A61B /* UserDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetails.swift; sourceTree = "<group>"; };
 		598069972383529E0014493C /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		5980699923835E770014493C /* NetworkingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingController.swift; sourceTree = "<group>"; };
 		5980699C23835F6F0014493C /* NetworkDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataLoader.swift; sourceTree = "<group>"; };
@@ -164,6 +170,9 @@
 				5995D18623831A4F006F6404 /* UserRepresentation.swift */,
 				5995D18823831A9B006F6404 /* ItemRepresentation.swift */,
 				5914705D2384A02600004A18 /* Bearer.swift */,
+				595D60622386F8AE00D8A61B /* SignUpUser.swift */,
+				595D60642386FA5E00D8A61B /* SignInResponse.swift */,
+				595D606623871A7D00D8A61B /* UserDetails.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -288,6 +297,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				595D60632386F8AE00D8A61B /* SignUpUser.swift in Sources */,
 				E97C60FA2384B03200232701 /* LoginViewController.swift in Sources */,
 				5980699A23835E770014493C /* NetworkingController.swift in Sources */,
 				5980699F23835FBE0014493C /* URLSession+NetworkDataLoader.swift in Sources */,
@@ -296,7 +306,9 @@
 				E9D8082623860E1400754F70 /* ItemDetailViewController.swift in Sources */,
 				5914705E2384A02600004A18 /* Bearer.swift in Sources */,
 				598069982383529E0014493C /* UserController.swift in Sources */,
+				595D60652386FA5E00D8A61B /* SignInResponse.swift in Sources */,
 				5995D18723831A4F006F6404 /* UserRepresentation.swift in Sources */,
+				595D606723871A7E00D8A61B /* UserDetails.swift in Sources */,
 				5980699D23835F6F0014493C /* NetworkDataLoader.swift in Sources */,
 				5995D16B238316F3006F6404 /* AppDelegate.swift in Sources */,
 				5995D16D238316F3006F6404 /* SceneDelegate.swift in Sources */,
