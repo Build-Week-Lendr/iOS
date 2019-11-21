@@ -13,12 +13,20 @@ class MockLoader: NetworkDataLoader {
     
     var request: URLRequest?
     var data: Data?
+    var response: URLResponse?
     var error: Error?
     
     func loadData(with request: URLRequest, completion: @escaping (Data?, Error?) -> Void) {
         self.request = request
         DispatchQueue.main.async {
             completion(self.data, self.error)
+        }
+    }
+    
+    func loadData(with request: URLRequest, completion: @escaping (Data?, URLResponse?, Error?) -> Void) {
+        self.request = request
+        DispatchQueue.main.async {
+            completion(self.data, self.response, self.error)
         }
     }
     

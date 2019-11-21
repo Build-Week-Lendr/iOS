@@ -12,6 +12,8 @@ class ItemController {
     
     let dateFormatter: DateFormatter
     
+    let networkingController = NetworkingController()
+    
     init() {
         dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMMM d, yyyy"
@@ -75,6 +77,94 @@ class ItemController {
         }
         
         CoreDataStack.shared.save(context: context)
+    }
+    
+    func createItem(named name: String, holder: User? = nil, itemDescription: String? = nil, lendNotes: String? = nil, lendDate: Date? = Date(), context: NSManagedObjectContext, completion: @escaping (Item?, Error?) -> Void) {
+        
+        var lendDateString: String?
+        
+        if let lendDate = lendDate {
+            lendDateString = dateFormatter.string(from: lendDate)
+        }
+        
+        let itemRepresentation = ItemRepresentation(name: name, id: 0, owner: nil, holder: holder?.name, itemDescription: itemDescription, lendNotes: lendNotes, lentDate: lendDateString)
+        
+        let url = networkingController.baseURL
+            .appendingPathComponent("items")
+            .appendingPathComponent("item")
+        
+        networkingController.post(itemRepresentation, to: url) { data, response, error in
+
+            if let error = error {
+                completion(nil, error)
+                return
+            }
+
+            guard let response = response as? HTTPURLResponse,
+                let location = response.allHeaderFields["Location"] as? NSString,
+                let itemID = Int16(location.lastPathComponent) else {
+                completion(nil, NSError())
+                return
+            }
+
+            let createdItemRepresentation = ItemRepresentation(name: name, id: itemID, owner: nil, holder: holder?.name, itemDescription: itemDescription, lendNotes: lendNotes, lentDate: lendDateString)
+
+            let item = Item(representation: createdItemRepresentation, context: context)
+            CoreDataStack.shared.save(context: context)
+            completion(item, nil)
+        }
+    }
+    
+    func deleteItem(_ item: Item, context: NSManagedObjectContext, completion: @escaping (Error?) -> Void) {
+        
+        let url = networkingController.baseURL
+            .appendingPathComponent("items")
+            .appendingPathComponent("item")
+            .appendingPathComponent("\(item.id)")
+        
+        networkingController.delete(from: url) { _, _, error in
+            if let error = error {
+                completion(error)
+                return
+            }
+            
+            context.delete(item)
+            completion(nil)
+        }
+    }
+    
+    func updateItem(item: Item, name: String, holder: User?, itemDescription: String?, lendNotes: String?, lendDate: Date?, context: NSManagedObjectContext, completion: @escaping (Item?, Error?) -> Void) {
+        
+        var lendDateString: String?
+        
+        if let lendDate = lendDate {
+            lendDateString = dateFormatter.string(from: lendDate)
+        }
+        
+        item.name = name
+        item.holder = holder
+        item.itemDescription = itemDescription
+        item.lendNotes = lendNotes
+        item.lentDate = lendDate
+        
+        var itemRepresentation = item.representation
+        itemRepresentation?.lentDate = lendDateString
+        
+        let url = networkingController.baseURL
+            .appendingPathComponent("items")
+            .appendingPathComponent("item")
+            .appendingPathComponent("\(item.id)")
+        
+        networkingController.post(itemRepresentation, to: url) { data, response, error in
+
+            if let error = error {
+                completion(nil, error)
+                return
+            }
+            
+            CoreDataStack.shared.save(context: context)
+            completion(item, nil)
+        }
     }
     
 }
