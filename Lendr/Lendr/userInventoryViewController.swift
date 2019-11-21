@@ -30,7 +30,7 @@ class userInventoryViewController: UIViewController, UITableViewDataSource, UITa
     }
     
 
-    
+ 
     lazy var itemFetchedResultsController: NSFetchedResultsController<Item> = {
            
            let fetchRequest: NSFetchRequest<Item> = Item.fetchRequest()
@@ -55,14 +55,16 @@ class userInventoryViewController: UIViewController, UITableViewDataSource, UITa
            }
            
        }()
-    
+      
 //    func setUpView() {
 //          let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
 //              fetchRequest.predicate = NSPredicate(format: "identifier IN %@", identifiersToFetch)
 //    }
    
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let available = itemFetchedResultsController.fetchedObjects?.filter({$0.holder == nil})
         return itemFetchedResultsController.fetchedObjects?.count ?? 0
+        
     }
     
      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
