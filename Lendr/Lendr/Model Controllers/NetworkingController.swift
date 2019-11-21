@@ -20,8 +20,7 @@ class NetworkingController {
     let jsonDecoder = JSONDecoder()
     let jsonEncoder = JSONEncoder()
     
-    #warning("Remove the default access token once login is supported")
-    var bearer: Bearer? = Bearer(accessToken: "3bf68821-97fc-4042-a417-226563c5e880")
+    var bearer: Bearer? = Bearer(accessToken: "71ae686c-e5e7-432d-b0aa-65f0d96dc2a3")
     
     init(networkLoader: NetworkDataLoader = URLSession.shared) {
         self.networkLoader = networkLoader
@@ -56,8 +55,74 @@ class NetworkingController {
         }
     }
     
+    func signUp(user: SignUpUser, completion: @escaping (SignInResponse?, Error?) -> Void) {
+        let url = baseURL.appendingPathComponent("createnewuser")
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: HeaderNames.contentType.rawValue)
+        
+        do {
+            let encodedUser = try jsonEncoder.encode(user)
+            request.httpBody = encodedUser
+        } catch {
+            completion(nil, error)
+        }
+        
+        networkLoader.loadData(with: request) { data, error in
+            if let error = error {
+                completion(nil, error)
+                return
+            }
+            
+            guard let data = data else {
+                completion(nil, NSError())
+                return
+            }
+            
+            do {
+                let signInResponse = try self.jsonDecoder.decode(SignInResponse.self, from: data)
+                completion(signInResponse, nil)
+            } catch {
+                completion(nil, error)
+            }
+        }
+    }
+    
     func signIn(token: String) {
         bearer = Bearer(accessToken: token)
+    }
+    
+    func fetchUserInfo(completion: @escaping (UserDetails?, Error?) -> Void) {
+        guard let bearer = bearer else {
+            completion(nil, NSError())
+            return
+        }
+        
+        let url = baseURL
+            .appendingPathComponent("users")
+            .appendingPathComponent("getuserinfo")
+        
+        var request = URLRequest(url: url)
+        request.setValue("Bearer \(bearer.accessToken)", forHTTPHeaderField: HeaderNames.auth.rawValue)
+        
+        networkLoader.loadData(with: request) { data, error in
+            if let error = error {
+                completion(nil, error)
+            }
+            
+            guard let data = data else {
+                completion(nil, NSError())
+                return
+            }
+            
+            do {
+                let userDetails = try self.jsonDecoder.decode(UserDetails.self, from: data)
+                completion(userDetails, nil)
+            } catch {
+                completion(nil, error)
+            }
+        }
     }
     
     func post<Type: Codable>(_ value: Type, to url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> Void) {
