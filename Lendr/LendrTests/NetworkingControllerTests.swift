@@ -11,6 +11,10 @@ import XCTest
 
 class NetworkingControllerTests: XCTestCase {
 
+    override func setUp() {
+        NetworkingController.signIn(token: "71ae686c-e5e7-432d-b0aa-65f0d96dc2a3")
+    }
+
     func testFetchItems() {
         let mock = MockLoader()
         mock.data = validItemsJSON

@@ -13,6 +13,7 @@ import CoreData
 class ItemControllerTests: XCTestCase {
 
     override func setUp() {
+        NetworkingController.signIn(token: "71ae686c-e5e7-432d-b0aa-65f0d96dc2a3")
         let context = CoreDataStack.shared.mainContext
 
         // Clear all of the items
