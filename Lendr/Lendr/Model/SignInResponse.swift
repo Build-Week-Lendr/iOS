@@ -10,7 +10,7 @@ import Foundation
 
 struct SignInResponse: Codable {
     let accessToken: String
-    
+
     enum ResponseKeys: String, CodingKey {
         case accessToken = "access_token"
     }
