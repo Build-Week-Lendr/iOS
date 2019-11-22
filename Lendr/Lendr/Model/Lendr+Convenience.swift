@@ -57,6 +57,10 @@ extension Item {
         
         self.name = name
         self.id = id
+        self.itemDescription = itemDescription
+        self.lendNotes = lendNotes
+//        self.holder = holder
+        self.lentDate = lentDate
     }
     
     @discardableResult convenience init(representation: ItemRepresentation, context: NSManagedObjectContext) {

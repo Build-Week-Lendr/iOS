@@ -12,24 +12,60 @@ import CoreData
 class userInventoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
 
     
-
+    var networkingController: NetworkingController = NetworkingController()
+    var itemController: ItemController = ItemController()
+    
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
     
     @IBOutlet weak var itemsAvailNumberLabel: UILabel!
     
     @IBOutlet weak var lentItemsLabel: UILabel!
     
+    @IBOutlet weak var newItemButton: UIButton!
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.dataSource = self
-//        usernameLabel.text =
-        // Do any additional setup after loading the view.
+        self.title = "LendR"
+        
+        newItemButton.layer.backgroundColor = UIColor.lightGray.cgColor
+        newItemButton.layer.cornerRadius = 6
+        newItemButton.layer.borderColor = UIColor.black.cgColor
+        newItemButton.layer.borderWidth = 1
+        newItemButton.titleLabel?.font = UIFont(name: "Futura", size: 20)
+        
+        emailLabel.font = UIFont(name: "Futura", size: 20)
+        
+        networkingController.fetchUserInfo { userDetails, error in
+            if let error = error {
+                print("This is terrible! Error \(error)")
+            }
+            
+            guard let userDetails = userDetails else {return}
+            DispatchQueue.main.async {
+                self.usernameLabel.text = userDetails.username.capitalized
+                self.emailLabel.text = userDetails.email
+            }
+        }
+        updateViews()
+   
     }
     
+    
+    
+    func updateViews() {
+        guard let available = itemFetchedResultsController.fetchedObjects?.filter({$0.holder == nil}),
+                  let lent = itemFetchedResultsController.fetchedObjects?.filter({$0.holder != nil}) else {return}
+             
+              
+              itemsAvailNumberLabel.text = "\(available.count)"
+              lentItemsLabel.text = "\(lent.count)"
 
+    }
     
     lazy var itemFetchedResultsController: NSFetchedResultsController<Item> = {
            
@@ -41,7 +77,7 @@ class userInventoryViewController: UIViewController, UITableViewDataSource, UITa
            
            let frc = NSFetchedResultsController(fetchRequest: fetchRequest,
                                                 managedObjectContext: moc,
-                                                sectionNameKeyPath: "name",
+                                                sectionNameKeyPath: nil,
                                                 cacheName: nil)
            
            frc.delegate = self
@@ -63,31 +99,72 @@ class userInventoryViewController: UIViewController, UITableViewDataSource, UITa
    
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return itemFetchedResultsController.fetchedObjects?.count ?? 0
+        
     }
     
      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
          let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
         let item = itemFetchedResultsController.object(at: indexPath)
         cell.textLabel?.text = item.name
+        cell.detailTextLabel?.text = item.holder?.name ?? "Available"
         return cell
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let item = itemFetchedResultsController.object(at: indexPath)
+            let moc = CoreDataStack.shared.mainContext
+            itemController.deleteItem(item, context: moc) { (error) in
+                if let error = error {
+                    print("This is terrible! Error \(error)")
+                }
+            }
+            do{
+                try moc.save()
+                tableView.reloadData()
+            } catch {
+                moc.reset()
+                print("Error re-saving the managed object context: \(error)")
+            }
+        }
+    }
 //    func numberOfSections(in tableView: UITableView) -> Int {
-//        <#code#>
+//        return itemFetchedResultsController.sections?.count ?? 0
 //    }
-    
+//
     
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "ItemDetailSegue" {
+            if let detailVC = segue.destination as? ItemDetailViewController,
+                let indexPath = tableView.indexPathForSelectedRow {
+                detailVC.item = itemFetchedResultsController.object(at: indexPath)
+                detailVC.networkingController = networkingController
+            }
+        }
+        if segue.identifier == "NewItemSegue" {
+            if let createVC = segue.destination as? createItemViewController {
+                createVC.networkingController = networkingController
+                createVC.itemController = itemController
+                
+            }
+        }
+        if segue.identifier == "LendItemCellSegue" {
+            if let createVC = segue.destination as? createItemViewController,
+                let indexPath = tableView.indexPathForSelectedRow {
+                createVC.item = itemFetchedResultsController.object(at: indexPath)
+                createVC.networkingController = networkingController
+                createVC.itemController = itemController
+            
+            }
+        }
     }
-    */
+    
 
 }
 extension userInventoryViewController: NSFetchedResultsControllerDelegate {
@@ -97,6 +174,7 @@ extension userInventoryViewController: NSFetchedResultsControllerDelegate {
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
+        updateViews()
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
