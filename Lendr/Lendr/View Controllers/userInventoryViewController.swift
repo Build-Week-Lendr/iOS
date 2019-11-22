@@ -112,7 +112,7 @@ class UserInventoryViewController: UIViewController, UITableViewDataSource, UITa
             let moc = CoreDataStack.shared.mainContext
             itemController.deleteItem(item, context: moc) { (error) in
                 if let error = error {
-                    print("This is terrible! Error \(error)")
+                    NSLog("This is terrible! Error \(error)")
                 }
             }
             do {
@@ -120,7 +120,7 @@ class UserInventoryViewController: UIViewController, UITableViewDataSource, UITa
                 tableView.reloadData()
             } catch {
                 moc.reset()
-                print("Error re-saving the managed object context: \(error)")
+                NSLog("Error re-saving the managed object context: \(error)")
             }
         }
     }
