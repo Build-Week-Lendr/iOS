@@ -153,12 +153,12 @@
 				5995D16A238316F3006F6404 /* AppDelegate.swift */,
 				5995D16C238316F3006F6404 /* SceneDelegate.swift */,
 				E97C60F82384B00D00232701 /* View Controllers */,
+				5995D1812383181F006F6404 /* Model */,
+				59806996238352700014493C /* Model Controllers */,
 				5995D170238316F3006F6404 /* Main.storyboard */,
 				5995D176238316F6006F6404 /* Assets.xcassets */,
 				5995D178238316F6006F6404 /* LaunchScreen.storyboard */,
 				5995D17B238316F6006F6404 /* Info.plist */,
-				5995D1812383181F006F6404 /* Model */,
-				59806996238352700014493C /* Model Controllers */,
 				5980699B23835F5A0014493C /* Utilities */,
 			);
 			path = Lendr;
