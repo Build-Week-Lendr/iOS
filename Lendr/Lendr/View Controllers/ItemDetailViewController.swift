@@ -12,6 +12,7 @@ class ItemDetailViewController: UIViewController {
 
     var item: Item!
     var networkingController: NetworkingController!
+    var itemController: ItemController!
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var notesTextView: UITextView!
@@ -21,13 +22,18 @@ class ItemDetailViewController: UIViewController {
     @IBOutlet weak var dateLabel: UILabel!
 
     func setUpView() {
-           ownerLabel.font = UIFont(name: "Futura", size: 32)
-            holderLabel.font = UIFont(name: "Futura", size: 32)
-           nameLabel.text = item.name
-           notesTextView.text = item.lendNotes
-            holderLabel.text = item.holder?.name ?? "You"
-        dateLabel.text = "\(item.lentDate!)"
-       }
+        ownerLabel.font = UIFont(name: "Futura", size: 32)
+        holderLabel.font = UIFont(name: "Futura", size: 32)
+        nameLabel.text = item.name
+        notesTextView.text = item.lendNotes
+        holderLabel.text = item.holder?.name ?? "You"
+        if let date = item.lentDate {
+            let dateString = itemController.dateFormatter.string(from: date)
+            dateLabel.text = "\(dateString)"
+        } else {
+            dateLabel.text = nil
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

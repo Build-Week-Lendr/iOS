@@ -1,5 +1,5 @@
 //
-//  userInventoryViewController.swift
+//  UserInventoryViewController.swift
 //  Lendr
 //
 //  Created by Thomas Sabino-Benowitz on 11/20/19.
@@ -27,7 +27,7 @@ class UserInventoryViewController: UIViewController, UITableViewDataSource, UITa
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "LendR"
+        self.title = "Lendr"
 
         newItemButton.layer.backgroundColor = UIColor.lightGray.cgColor
         newItemButton.layer.cornerRadius = 6
@@ -138,6 +138,7 @@ class UserInventoryViewController: UIViewController, UITableViewDataSource, UITa
                 let indexPath = tableView.indexPathForSelectedRow {
                 detailVC.item = itemFetchedResultsController.object(at: indexPath)
                 detailVC.networkingController = networkingController
+                detailVC.itemController = itemController
             }
         }
         if segue.identifier == "NewItemSegue" {

@@ -1,5 +1,5 @@
 //
-//  createItemViewController.swift
+//  CreateItemViewController.swift
 //  Lendr
 //
 //  Created by Thomas Sabino-Benowitz on 11/20/19.
