@@ -13,6 +13,8 @@
 		595D60632386F8AE00D8A61B /* SignUpUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595D60622386F8AE00D8A61B /* SignUpUser.swift */; };
 		595D60652386FA5E00D8A61B /* SignInResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595D60642386FA5E00D8A61B /* SignInResponse.swift */; };
 		595D606723871A7E00D8A61B /* UserDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595D606623871A7D00D8A61B /* UserDetails.swift */; };
+		595D606A2387BAC400D8A61B /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595D60692387BAC400D8A61B /* SignInViewController.swift */; };
+		595D606C2387BC0300D8A61B /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595D606B2387BC0300D8A61B /* SignUpViewController.swift */; };
 		598069982383529E0014493C /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598069972383529E0014493C /* UserController.swift */; };
 		5980699A23835E770014493C /* NetworkingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5980699923835E770014493C /* NetworkingController.swift */; };
 		5980699D23835F6F0014493C /* NetworkDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5980699C23835F6F0014493C /* NetworkDataLoader.swift */; };
@@ -53,6 +55,8 @@
 		595D60622386F8AE00D8A61B /* SignUpUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUser.swift; sourceTree = "<group>"; };
 		595D60642386FA5E00D8A61B /* SignInResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInResponse.swift; sourceTree = "<group>"; };
 		595D606623871A7D00D8A61B /* UserDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetails.swift; sourceTree = "<group>"; };
+		595D60692387BAC400D8A61B /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		595D606B2387BC0300D8A61B /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		598069972383529E0014493C /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		5980699923835E770014493C /* NetworkingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingController.swift; sourceTree = "<group>"; };
 		5980699C23835F6F0014493C /* NetworkDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataLoader.swift; sourceTree = "<group>"; };
@@ -187,6 +191,8 @@
 				E9C068BA2387950700AD8E33 /* ItemTableViewCell.swift */,
 				E9D8082523860E1400754F70 /* ItemDetailViewController.swift */,
 				E9C068B623863EC700AD8E33 /* CreateItemViewController.swift */,
+				595D60692387BAC400D8A61B /* SignInViewController.swift */,
+				595D606B2387BC0300D8A61B /* SignUpViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -324,6 +330,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				595D606C2387BC0300D8A61B /* SignUpViewController.swift in Sources */,
 				595D60632386F8AE00D8A61B /* SignUpUser.swift in Sources */,
 				5980699A23835E770014493C /* NetworkingController.swift in Sources */,
 				5980699F23835FBE0014493C /* URLSession+NetworkDataLoader.swift in Sources */,
@@ -338,6 +345,7 @@
 				595D606723871A7E00D8A61B /* UserDetails.swift in Sources */,
 				E9C068BB2387950700AD8E33 /* ItemTableViewCell.swift in Sources */,
 				5980699D23835F6F0014493C /* NetworkDataLoader.swift in Sources */,
+				595D606A2387BAC400D8A61B /* SignInViewController.swift in Sources */,
 				5995D16B238316F3006F6404 /* AppDelegate.swift in Sources */,
 				5995D16D238316F3006F6404 /* SceneDelegate.swift in Sources */,
 				5995D175238316F3006F6404 /* Lendr.xcdatamodeld in Sources */,

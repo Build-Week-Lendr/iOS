@@ -10,7 +10,7 @@
         <!--Lendr-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Lendr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="SignUpViewController" customModule="Lendr" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -36,6 +36,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="at0-tY-Wu9">
                                         <rect key="frame" x="0.0" y="162" width="374" height="30"/>
                                         <state key="normal" title="Register"/>
+                                        <connections>
+                                            <action selector="register:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jpC-i0-Ngn"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -50,7 +53,10 @@
                     </view>
                     <navigationItem key="navigationItem" title="Lendr" prompt="Register" id="KA3-bc-3g4"/>
                     <connections>
-                        <segue destination="Zsb-ol-m1A" kind="presentation" modalPresentationStyle="fullScreen" id="kG3-ty-xPd"/>
+                        <outlet property="emailTextField" destination="8tp-5a-5J2" id="elY-o6-rnr"/>
+                        <outlet property="passwordTextField" destination="aZu-wr-e9J" id="lJd-bI-vuf"/>
+                        <outlet property="usernameTextField" destination="dvq-Qh-rQh" id="FA7-tq-Ssg"/>
+                        <segue destination="Zsb-ol-m1A" kind="presentation" identifier="signUpSegue" modalPresentationStyle="fullScreen" id="kG3-ty-xPd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -476,7 +482,7 @@
         <!--Lendr-->
         <scene sceneID="x6Y-sp-w76">
             <objects>
-                <viewController id="7tl-Jb-jyT" customClass="ViewController" customModule="Lendr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="7tl-Jb-jyT" customClass="SignInViewController" customModule="Lendr" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SQ8-Lw-Xu6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -497,6 +503,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8BC-7X-eJh">
                                         <rect key="frame" x="0.0" y="108" width="374" height="30"/>
                                         <state key="normal" title="Log In"/>
+                                        <connections>
+                                            <action selector="signIn:" destination="7tl-Jb-jyT" eventType="touchUpInside" id="Sgg-OQ-Qtp"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -511,7 +520,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Lendr" prompt="Sign in" id="1JG-w2-1bE"/>
                     <connections>
-                        <segue destination="Zsb-ol-m1A" kind="presentation" modalPresentationStyle="fullScreen" id="5zt-cs-rHg"/>
+                        <outlet property="passwordTextField" destination="s3H-E7-e4L" id="2bg-cI-KDp"/>
+                        <segue destination="Zsb-ol-m1A" kind="presentation" identifier="signInSegue" modalPresentationStyle="fullScreen" id="5zt-cs-rHg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8dC-oM-8Bb" sceneMemberID="firstResponder"/>
