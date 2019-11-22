@@ -52,7 +52,12 @@ extension Item {
                                   lentDate: nil)
     }
 
-    @discardableResult convenience init(name: String, id: Int16, itemDescription: String? = nil, lendNotes: String? = nil, lentDate: Date? = nil, context: NSManagedObjectContext) {
+    @discardableResult convenience init(name: String,
+                                        id: Int16,
+                                        itemDescription: String? = nil,
+                                        lendNotes: String? = nil,
+                                        lentDate: Date? = nil,
+                                        context: NSManagedObjectContext) {
         self.init(context: context)
 
         self.name = name
