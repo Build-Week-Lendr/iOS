@@ -111,6 +111,8 @@ class ItemController {
             let createdItemRepresentation = ItemRepresentation(name: name, id: itemID, owner: nil, holder: holder?.name, itemDescription: itemDescription, lendNotes: lendNotes, lentDate: lendDateString)
 
             let item = Item(representation: createdItemRepresentation, context: context)
+            item.holder = holder
+            item.lentDate = lendDate
             CoreDataStack.shared.save(context: context)
             completion(item, nil)
         }
