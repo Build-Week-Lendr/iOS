@@ -20,14 +20,14 @@ class NetworkingController {
     let jsonDecoder = JSONDecoder()
     let jsonEncoder = JSONEncoder()
 
-    var bearer: Bearer? = Bearer(accessToken: "71ae686c-e5e7-432d-b0aa-65f0d96dc2a3")
+    static var bearer: Bearer?
 
     init(networkLoader: NetworkDataLoader = URLSession.shared) {
         self.networkLoader = networkLoader
     }
 
     func fetch<Type: Codable>(from url: URL, completion: @escaping (Type?, Error?) -> Void) {
-        guard let bearer = bearer else {
+        guard let bearer = NetworkingController.bearer else {
             completion(nil, NSError())
             return
         }
@@ -89,12 +89,12 @@ class NetworkingController {
         }
     }
 
-    func signIn(token: String) {
+    static func signIn(token: String) {
         bearer = Bearer(accessToken: token)
     }
 
     func fetchUserInfo(completion: @escaping (UserDetails?, Error?) -> Void) {
-        guard let bearer = bearer else {
+        guard let bearer = NetworkingController.bearer else {
             completion(nil, NSError())
             return
         }
@@ -126,7 +126,7 @@ class NetworkingController {
     }
 
     func post<Type: Codable>(_ value: Type, to url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> Void) {
-        guard let bearer = bearer else {
+        guard let bearer = NetworkingController.bearer else {
             completion(nil, nil, NSError())
             return
         }
@@ -161,7 +161,7 @@ class NetworkingController {
     }
 
     func delete(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> Void) {
-        guard let bearer = bearer else {
+        guard let bearer = NetworkingController.bearer else {
             completion(nil, nil, NSError())
             return
         }

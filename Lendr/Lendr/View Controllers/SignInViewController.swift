@@ -1,21 +1,29 @@
 //
-//  LoginViewController.swift
+//  SignInViewController.swift
 //  Lendr
 //
-//  Created by Thomas Sabino-Benowitz on 11/19/19.
+//  Created by Isaac Lyons on 11/21/19.
 //  Copyright © 2019 Lambda School. All rights reserved.
 //
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class SignInViewController: UIViewController {
 
-    @IBOutlet weak var tokenTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+
+    @IBAction func signIn(_ sender: UIButton) {
+        guard let password = passwordTextField.text,
+            !password.isEmpty else { return }
+
+        NetworkingController.signIn(token: password)
+        self.performSegue(withIdentifier: "signInSegue", sender: self)
     }
 
     /*
@@ -27,10 +35,5 @@ class LoginViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    @IBAction func loginButtonTapped(_ sender: Any) {
-        guard let token = tokenTextField.text,
-            !token.isEmpty else { return }
-
-    }
 
 }

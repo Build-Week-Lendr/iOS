@@ -10,45 +10,47 @@ import UIKit
 
 class ItemDetailViewController: UIViewController {
 
-    
     var item: Item!
     var networkingController: NetworkingController!
-    
+    var itemController: ItemController!
+
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var notesTextView: UITextView!
     @IBOutlet weak var lendItemButton: UIButton!
     @IBOutlet weak var ownerLabel: UILabel!
     @IBOutlet weak var holderLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
-    
+
     func setUpView() {
-           ownerLabel.font = UIFont(name: "Futura", size: 32)
-            holderLabel.font = UIFont(name: "Futura", size: 32)
-           nameLabel.text = item.name
-           notesTextView.text = item.lendNotes
-            holderLabel.text = item.holder?.name ?? "You"
-        dateLabel.text = "\(item.lentDate!)"
-       }
-    
+        ownerLabel.font = UIFont(name: "Futura", size: 32)
+        holderLabel.font = UIFont(name: "Futura", size: 32)
+        nameLabel.text = item.name
+        notesTextView.text = item.lendNotes
+        holderLabel.text = item.holder?.name ?? "You"
+        if let date = item.lentDate {
+            let dateString = itemController.dateFormatter.string(from: date)
+            dateLabel.text = "\(dateString)"
+        } else {
+            dateLabel.text = nil
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpView()
-        print("\(item)")
+        //print("\(item)")
         networkingController.fetchUserInfo { userDetails, error in
             if let error = error {
                 print("This is terrible! Error \(error)")
             }
-            
+
             guard let userDetails = userDetails else {return}
             DispatchQueue.main.async {
                 self.ownerLabel.text = userDetails.username.capitalized
-                
+
             }
         }
     }
-    
-   
-    
 
     /*
     // MARK: - Navigation
