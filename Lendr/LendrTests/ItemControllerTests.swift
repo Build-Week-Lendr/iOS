@@ -293,7 +293,9 @@ class ItemControllerTests: XCTestCase {
 
         let name = "Test Item to delete"
 
-        itemController.createItem(named: name, itemDescription: "An item to test deleting items", lendDate: nil, context: context) { createdItem, error in
+        itemController.createItem(named: name,
+                                  itemDescription: "An item to test deleting items",
+                                  lendDate: nil, context: context) { createdItem, error in
             XCTAssertNil(error)
             XCTAssertNotNil(createdItem)
             XCTAssertEqual(createdItem?.name, name)
@@ -303,9 +305,13 @@ class ItemControllerTests: XCTestCase {
 
                 let fetchRequest: NSFetchRequest<Item> = Item.fetchRequest()
                 fetchRequest.predicate = NSPredicate(format: "name == %@", name)
-                let results = try! context.fetch(fetchRequest)
 
-                XCTAssertEqual(results, [])
+                do {
+                    let results = try context.fetch(fetchRequest)
+                    XCTAssertEqual(results, [])
+                } catch {
+                    XCTFail("\(error)")
+                }
 
                 resultsExpectation.fulfill()
             }
@@ -324,7 +330,9 @@ class ItemControllerTests: XCTestCase {
         let name = "Test item to be updated"
         let updatedName = "Test item that has been updated"
 
-        itemController.createItem(named: name, itemDescription: "An item to test updating items", lendDate: nil, context: context) { createdItem, error in
+        itemController.createItem(named: name,
+                                  itemDescription: "An item to test updating items",
+                                  lendDate: nil, context: context) { createdItem, error in
             XCTAssertNil(error)
             XCTAssertNotNil(createdItem)
             XCTAssertEqual(createdItem?.name, name)

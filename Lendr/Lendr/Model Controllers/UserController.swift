@@ -10,11 +10,11 @@ import CoreData
 
 class UserController {
 
-    @discardableResult func createUser(named name: String, id: String?, context: NSManagedObjectContext) -> User {
+    @discardableResult func createUser(named name: String, userId: String?, context: NSManagedObjectContext) -> User {
         let user: User
 
-        if let id = id {
-            user = User(name: name, id: id, context: context)
+        if let userId = userId {
+            user = User(name: name, id: userId, context: context)
         } else {
             user = User(name: name, context: context)
         }

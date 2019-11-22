@@ -19,7 +19,8 @@ class NetworkingControllerTests: XCTestCase {
 
         let resultsExpectation = expectation(description: "Wait for the results")
 
-        client.fetch(from: URL(string: "https://zero5nelsonm-lendr.herokuapp.com/items/items")!) { (itemRepresentations: [ItemRepresentation]?, error: Error?) in
+        client.fetch(from: URL(string: "https://zero5nelsonm-lendr.herokuapp.com/items/items")!
+        ) {(itemRepresentations: [ItemRepresentation]?, error: Error?) in
             XCTAssertNil(error)
             XCTAssertNotNil(itemRepresentations)
 
@@ -71,7 +72,7 @@ class NetworkingControllerTests: XCTestCase {
 
         client.signUp(user: newUser) { response, error in
             XCTAssertNil(error)
-            XCTAssertNotNil(response?.access_token)
+            XCTAssertNotNil(response?.accessToken)
 
             resultsExpectation.fulfill()
         }
